@@ -1,31 +1,39 @@
 package Final.Decorator;
 
-public class BasicMeal implements Meal {
-    private String description;
-    private int fats;
-    private int carbs;
-    private int protein;
+import Final.enums.DietaryRestriction;
+import Final.enums.MenuItem;
 
-    public BasicMeal(String description, int fats, int carbs, int protein) {
-        this.description = description;
-        this.fats = fats;
-        this.carbs = carbs;
-        this.protein = protein;
+public class BasicMeal implements Meal {
+    private MenuItem menuItem;
+
+    public BasicMeal(MenuItem menuItem) {
+        this.menuItem = menuItem;
     }
 
     public String getDescription() {
-        return description;
+        return menuItem.getDescription();
     }
 
     public int getFats() {
-        return fats;
+        return menuItem.getFats();
     }
 
     public int getCarbs() {
-        return carbs;
+        return menuItem.getCarbs();
     }
 
     public int getProtein() {
-        return protein;
+        return menuItem.getProtein();
+    }
+
+    public boolean isMealCompatibleWithDiet(DietaryRestriction diet) {
+        for (String restriction : this.menuItem.getDietRestrictions()) {
+            if (restriction.equalsIgnoreCase(diet.toString())){
+                return false; // Diet present in restrictions, so not compatible
+            }
+        }
+        return true;
+
     }
 }
+

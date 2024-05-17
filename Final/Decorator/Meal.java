@@ -1,5 +1,7 @@
 package Final.Decorator;
 
+import Final.enums.DietaryRestriction;
+
 public interface Meal {
     String getDescription();
     int getFats();

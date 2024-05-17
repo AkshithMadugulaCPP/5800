@@ -1,26 +1,28 @@
 package Final.Decorator;
 
-public class ToppingDecorator extends MealDecorator {
-    private String topping;
+import Final.enums.Topping;
 
-    public ToppingDecorator(Meal decoratedMeal, String topping) {
+public class ToppingDecorator extends MealDecorator {
+    private Topping topping;
+
+    public ToppingDecorator(Meal decoratedMeal, Topping topping) {
         super(decoratedMeal);
         this.topping = topping;
     }
 
     public String getDescription() {
-        return decoratedMeal.getDescription() + ", with " + topping;
+        return decoratedMeal.getDescription() + ", with " + topping.getDescription();
     }
 
     public int getFats() {
-        return decoratedMeal.getFats() + 2; // Example value
+        return decoratedMeal.getFats() + topping.getFats();
     }
 
     public int getCarbs() {
-        return decoratedMeal.getCarbs() + 3; // Example value
+        return decoratedMeal.getCarbs() + topping.getCarbs();
     }
 
     public int getProtein() {
-        return decoratedMeal.getProtein() + 1; // Example value
+        return decoratedMeal.getProtein() + topping.getProtein();
     }
 }

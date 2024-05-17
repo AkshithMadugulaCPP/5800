@@ -1,15 +1,15 @@
 package Final;
 
+import Final.Decorator.BasicMeal;
 import Final.Decorator.Meal;
 import Final.Factory.MenuFactory;
-
 import java.util.List;
 import java.util.Map;
 
 public class Restaurant extends User {
     private Map<String, String> operatingHours;
     private String cuisineType;
-    private List<Meal> menu;
+    private List<BasicMeal> menu;
 
     public Restaurant(String name, String address, String county, Map<String, String> operatingHours, String cuisineType) {
         super(name, address, county);
@@ -26,13 +26,7 @@ public class Restaurant extends User {
         return cuisineType;
     }
 
-    public void setMenu(List<Meal> menu) {
-        this.menu = menu;
-    }
-
-    public List<Meal> getMenu() {
+    public List<BasicMeal> getMenu() {
         return menu;
     }
 }
-
-

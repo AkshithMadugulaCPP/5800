@@ -37,32 +37,77 @@ public class Order {
         return state.getStatus();
     }
 
-    // Getters and setters for order details
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
+    public List<Meal> getFoodItems() {
+        return foodItems;
+    }
+
     public void setFoodItems(List<Meal> foodItems) {
         this.foodItems = foodItems;
+    }
+
+    public Driver getDriver() {
+        return driver;
     }
 
     public void setDriver(Driver driver) {
         this.driver = driver;
     }
 
+    public LocalDateTime getOrderCreationTime() {
+        return orderCreationTime;
+    }
+
     public void setOrderCreationTime(LocalDateTime orderCreationTime) {
         this.orderCreationTime = orderCreationTime;
+    }
+
+    public LocalDateTime getOrderPickUpTime() {
+        return orderPickUpTime;
     }
 
     public void setOrderPickUpTime(LocalDateTime orderPickUpTime) {
         this.orderPickUpTime = orderPickUpTime;
     }
 
+    public LocalDateTime getOrderDeliveredTime() {
+        return orderDeliveredTime;
+    }
+
     public void setOrderDeliveredTime(LocalDateTime orderDeliveredTime) {
         this.orderDeliveredTime = orderDeliveredTime;
+    }
+
+    public String displayOrder() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n").append("Order Details: ").append("\n");
+        sb.append("Restaurant: ").append(restaurant.getName()).append("\n");
+        sb.append("Customer: ").append(customer.getName()).append("\n");
+        sb.append("Food Items:\n");
+        for (Meal meal : foodItems) {
+            sb.append("- ").append(meal.getDescription()).append("\n");
+        }
+        if (driver != null) {
+            sb.append("Driver: ").append(driver.getName()).append("\n");
+        }
+        sb.append("Order Creation Time: ").append(orderCreationTime).append("\n");
+        System.out.println(sb);
+        return sb.toString();
+
     }
 }
