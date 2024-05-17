@@ -1,6 +1,7 @@
 package Final;
 
 import Final.Decorator.Meal;
+import Final.Factory.MenuFactory;
 
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ public class Restaurant extends User {
         super(name, address, county);
         this.operatingHours = operatingHours;
         this.cuisineType = cuisineType;
+        this.menu = MenuFactory.createMenu(cuisineType);
     }
 
     public Map<String, String> getOperatingHours() {

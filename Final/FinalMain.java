@@ -1,13 +1,14 @@
 package Final;
 
 import Final.Decorator.BasicMeal;
-import Final.Factory.CustomerFactory;
-import Final.Factory.DriverFactory;
-import Final.Factory.RestaurantFactory;
+import Final.Decorator.*;
+import Final.Factory.*;
 import Final.Singleton.CPPFoodDelivery;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FinalMain {
@@ -35,16 +36,46 @@ public class FinalMain {
         platform.registerDriver(d1);
         platform.registerDriver(d2);
 
+        // Customer ready to order
+        System.out.println("Customer " + c1.getName() + " is ready to order.");
+        List<Restaurant> operatingRestaurants = platform.getOperatingRestaurants("Friday 9:00AM");
+        System.out.println("Currently operating restaurants:");
+        for (Restaurant restaurant : operatingRestaurants) {
+            System.out.println(restaurant.getName() + " (" + restaurant.getCuisineType() + ")");
+        }
+
+        // Customer selects restaurant and sees menu
+        Restaurant selectedRestaurant = operatingRestaurants.get(0);
+        System.out.println("Customer " + c1.getName() + " selected " + selectedRestaurant.getName());
+        System.out.println("Menu:");
+        for (Meal meal : selectedRestaurant.getMenu()) {
+            System.out.println(meal.getDescription() + " - Fats: " + meal.getFats() + ", Carbs: " + meal.getCarbs() + ", Protein: " + meal.getProtein());
+        }
+
+        // Customer chooses dietary restrictions and items
+        System.out.println("Customer " + c1.getName() + " has dietary restrictions: " + c1.getDietaryRestrictions());
+        Meal selectedMeal = selectedRestaurant.getMenu().get(0);
+        selectedMeal = new ToppingDecorator(selectedMeal, "Cheese");
+        selectedMeal = new ToppingDecorator(selectedMeal, "Guacamole");
+
         // Create and process an order
         Order order = new Order();
-        order.setRestaurant(r1);
+        order.setRestaurant(selectedRestaurant);
         order.setCustomer(c1);
-        order.setFoodItems(Arrays.asList(new BasicMeal("Taco", 10, 20, 5)));
+        order.setFoodItems(Arrays.asList(selectedMeal));
+        order.setOrderCreationTime(LocalDateTime.now());
 
         // Process the order through its states
         System.out.println("Order Status: " + order.getStatus());
         order.next();
         System.out.println("Order Status: " + order.getStatus());
+        order.next();
+        System.out.println("Order Status: " + order.getStatus());
+        Driver assignedDriver = platform.getAvailableDriver(selectedRestaurant.getCounty(), "Friday 9:00AM");
+        if (assignedDriver != null) {
+            order.setDriver(assignedDriver);
+            System.out.println("Assigned Driver: " + assignedDriver.getName());
+        }
         order.next();
         System.out.println("Order Status: " + order.getStatus());
     }

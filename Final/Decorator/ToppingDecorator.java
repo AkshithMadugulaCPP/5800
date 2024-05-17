@@ -1,6 +1,6 @@
 package Final.Decorator;
 
-class ToppingDecorator extends MealDecorator {
+public class ToppingDecorator extends MealDecorator {
     private String topping;
 
     public ToppingDecorator(Meal decoratedMeal, String topping) {
