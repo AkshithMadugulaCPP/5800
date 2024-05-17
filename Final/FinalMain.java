@@ -106,9 +106,16 @@ public class FinalMain {
 
     private static void registerCustomers(CPPFoodDelivery platform) {
         CustomerFactory customerFactory = new CustomerFactory();
-        for (int i = 1; i <= 10; i++) {
-            platform.registerCustomer(customerFactory.createUser("Customer " + i, i + " LA Ave", "LA County"));
-        }
+        platform.registerCustomer(customerFactory.createUser("Ram", "202 LA Ave", "LA County"));
+        platform.registerCustomer(customerFactory.createUser("Ruchitha", "303 Main St", "Orange County"));
+        platform.registerCustomer(customerFactory.createUser("Akshith", "404 Elm St", "San Bernardino County"));
+        platform.registerCustomer(customerFactory.createUser("Lahari", "505 Oak St", "LA County"));
+        platform.registerCustomer(customerFactory.createUser("Sravani", "606 Pine St", "Orange County"));
+        platform.registerCustomer(customerFactory.createUser("Gande", "707 Maple St", "San Bernardino County"));
+        platform.registerCustomer(customerFactory.createUser("Madugula", "808 Cedar St", "LA County"));
+        platform.registerCustomer(customerFactory.createUser("Sandepudi", "909 Birch St", "Orange County"));
+        platform.registerCustomer(customerFactory.createUser("Bakkareddy Gari", "1010 Walnut St", "San Bernardino County"));
+        platform.registerCustomer(customerFactory.createUser("Vikram", "1111 Cherry St", "LA County"));
     }
 
     private static void registerDrivers(CPPFoodDelivery platform) {

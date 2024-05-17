@@ -26,19 +26,31 @@ public class CPPFoodDelivery {
         return instance;
     }
 
-    public void registerCustomer(Customer customer) {
-        customers.add(customer);
-        System.out.println("Registered Customer: " + customer.getName());
+    public void registerDriver(Driver driver) {
+        drivers.add(driver);
+        System.out.println("------------------Registered Driver:------------------");
+        System.out.println("\tName: " + driver.getName());
+        System.out.println("\tAddress: " + driver.getAddress());
+        System.out.println("\tCounty: " + driver.getCounty());
+        System.out.println("\tShift: " + driver.getShift());
     }
 
     public void registerRestaurant(Restaurant restaurant) {
         restaurants.add(restaurant);
-        System.out.println("Registered Restaurant: " + restaurant.getName());
+        System.out.println("------------------Registered Restaurant:------------------");
+        System.out.println("\tName: " + restaurant.getName());
+        System.out.println("\tAddress: " + restaurant.getAddress());
+        System.out.println("\tCounty: " + restaurant.getCounty());
+        System.out.println("\tOperating Hours: " + restaurant.getOperatingHours());
+        System.out.println("\tCuisine Type: " + restaurant.getCuisineType());
     }
 
-    public void registerDriver(Driver driver) {
-        drivers.add(driver);
-        System.out.println("Registered Driver: " + driver.getName());
+    public void registerCustomer(Customer customer) {
+        customers.add(customer);
+        System.out.println("------------------Registered Customer:------------------");
+        System.out.println("\tName: " + customer.getName());
+        System.out.println("\tAddress: " + customer.getAddress());
+        System.out.println("\tCounty: " + customer.getCounty());
     }
 
     public List<Customer> getCustomers() {
