@@ -1,6 +1,6 @@
 package Final.Decorator;
 
-class DietaryRestrictionDecorator extends MealDecorator {
+public class DietaryRestrictionDecorator extends MealDecorator {
     private String restriction;
 
     public DietaryRestrictionDecorator(Meal decoratedMeal, String restriction) {

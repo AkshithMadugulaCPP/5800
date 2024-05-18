@@ -1,7 +1,7 @@
 package Final.Decorator;
 
-abstract class MealDecorator implements Meal {
-    protected Meal decoratedMeal;
+public abstract class MealDecorator implements Meal {
+    public Meal decoratedMeal;
 
     public MealDecorator(Meal decoratedMeal) {
         this.decoratedMeal = decoratedMeal;

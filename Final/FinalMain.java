@@ -80,7 +80,7 @@ public class FinalMain {
         }
     }
 
-    private static List<BasicMeal> getSelectableMeals(Restaurant restaurant, DietaryRestriction chosenRestriction) {
+    public static List<BasicMeal> getSelectableMeals(Restaurant restaurant, DietaryRestriction chosenRestriction) {
         List<BasicMeal> selectableMeals = new ArrayList<>();
         for (BasicMeal meal : restaurant.getMenu()) {
             if (meal.isMealCompatibleWithDiet(chosenRestriction)) {
@@ -142,7 +142,7 @@ public class FinalMain {
         return hours;
     }
 
-    private static Order createOrder(Restaurant restaurant, Customer customer, Meal meal) {
+    public static Order createOrder(Restaurant restaurant, Customer customer, Meal meal) {
         Order order = new Order();
         order.setRestaurant(restaurant);
         order.setCustomer(customer);
@@ -151,7 +151,7 @@ public class FinalMain {
         return order;
     }
 
-    private static void processOrder(CPPFoodDelivery platform, Order order) {
+    public static void processOrder(CPPFoodDelivery platform, Order order) {
         order.next();
         System.out.println("Order Status: " + order.getStatus());
         order.next();
@@ -161,7 +161,6 @@ public class FinalMain {
             System.out.println("Assigned Driver: " + assignedDriver.getName());
         }
         System.out.println("Order Status: " + order.getStatus());
-
     }
 
 }

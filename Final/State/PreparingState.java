@@ -2,7 +2,7 @@ package Final.State;
 
 import Final.Order;
 
-class PreparingState implements OrderState {
+public class PreparingState implements OrderState {
     public void next(Order order) {
         order.setState(new ReadyForPickupState());
     }
